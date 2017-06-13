@@ -19,17 +19,17 @@ var $test = $("div.subscription");
 if (!$test) {
     alert("null です");
 } else {
-    alert("div.subscription が見つかりました"); //この時点で既に中身のHTMLはあるらしいので、操作できるね。
+    alert("div.subscription が見つかりました"); //この時点で既に中身のHTMLはあるらしいが、操作できず。
 };
-
-// 読者登録タグを置換
-$ret = correctSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 
 // ------------------------------------------------------------------------
 // DOMがロードされたら
 // ------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
     alert ("A: document.addEventListener('DOMContentLoaded', function() { 処理 };");
+
+    // 読者登録タグを置換
+    $ret = correctSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 });
 
 // ------------------------------------------------------------------------
