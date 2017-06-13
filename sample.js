@@ -5,3 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 window.onload = function() {
     alert ("外部ファイル sample.js です。\n すべてのページ読込が完了しました。");
 };
+
+$(window).on("load", function() {
+    alert ("外部ファイル sample.js です。\n すべてのページ読込が完了しました。");
+});
