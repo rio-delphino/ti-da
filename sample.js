@@ -9,3 +9,7 @@ window.onload = function() {
 $(window).on("load", function() {
     alert ("外部ファイル sample.js です。\n すべてのページ読込が完了しました。");
 });
+
+$(document).ready( function() {
+    alert ("外部ファイル sample.js です。\n すべてのページ読込が完了しました。");
+});
