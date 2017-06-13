@@ -1,10 +1,10 @@
 // jsファイル読込と同時に実行
 alert ("0: 直接記述;");
-var $test = $("div:first-child");
+var $test = $("div.subscription");
 if (!$test) {
     alert("null です");
 } else {
-    alert("div:first-child 見つかりました");
+    alert("div.subscription が見つかりました");
 };
 
 // DOMがロードされたら
