@@ -1,5 +1,7 @@
 // jsファイル読込と同時に実行
 alert ("0: 直接記述;");
+var $test = $("div:first-child")
+if ($test == null) {alert("null")} else {alert("div:first-child 見つかりました")};
 
 // DOMがロードされたら
 document.addEventListener('DOMContentLoaded', function() {
