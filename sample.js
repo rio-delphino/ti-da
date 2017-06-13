@@ -15,3 +15,4 @@ $(window).on("load", function() {
     alert ("C2: $(window).on('load', function() { 処理 };");
 });
 
+ 
