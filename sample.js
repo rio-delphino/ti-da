@@ -15,11 +15,7 @@ var $ret; // 関数の戻り値用
 // jsファイル読込と同時に実行
 // ------------------------------------------------------------------------
 alert ("0: 直接記述;");
-var $test = $("div.subscription");
-if (!$test) {
-    alert("null です");
-} else {
-    alert("div.subscription が見つかりました"); //この時点で既に中身のHTMLはあるらしいが、操作できず。
+//この時点で既に中身のHTMLはあるが、操作はできず。
 };
 
 // ------------------------------------------------------------------------
@@ -28,7 +24,6 @@ if (!$test) {
 document.addEventListener('DOMContentLoaded', function() {
     alert ("A: document.addEventListener('DOMContentLoaded', function() { 処理 };");
 
-    alert ("correctSubscribe を呼び出す手前"); //★★★
     // 読者登録タグを置換
     $ret = correctSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 });
@@ -56,7 +51,7 @@ $(window).on("load", function() {
 // correctSubscribe 関数 : 読者登録のタグを置換します
 // ------------------------------------------------------------------------
 function correctSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
-    alert ("correctSubscribe が呼び出されました"); //★★★
+    
     var $target;
     
     // 読者登録の div を取得
