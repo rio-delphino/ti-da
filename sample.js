@@ -28,6 +28,7 @@ if (!$test) {
 document.addEventListener('DOMContentLoaded', function() {
     alert ("A: document.addEventListener('DOMContentLoaded', function() { 処理 };");
 
+    alert ("correctSubscribe を呼び出す手前"); //★★★
     // 読者登録タグを置換
     $ret = correctSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 });
