@@ -55,7 +55,7 @@ $(window).on("load", function() {
 // correctSubscribe 関数 : 読者登録のタグを置換します
 // ------------------------------------------------------------------------
 function correctSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
-    
+    alert ("correctSubscribe が呼び出されました"); //★★★
     var $target;
     
     // 読者登録の div を取得
