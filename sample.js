@@ -1,15 +1,15 @@
+// HTMLがロードされたら
 document.addEventListener('DOMContentLoaded', function() {
-    alert ("外部ファイル sample.js です。\n DOMContentLoaded イベントが発火しました。");
+    alert ("document.addEventListener('DOMContentLoaded', function() { 処理 };");
 });
 
 window.onload = function() {
-    alert ("外部ファイル sample.js です。\n すべてのページ読込が完了しました。");
+    alert ("window.onload = function() { 処理 };");
 };
 
 $(window).on("load", function() {
-    alert ("外部ファイル sample.js です。\n すべてのページ読込が完了しました。");
 });
 
 $(document).ready( function() {
-    alert ("外部ファイル sample.js です。\n すべてのページ読込が完了しました。");
+    alert ("$(document).ready( function() { 処理 };");
 });
