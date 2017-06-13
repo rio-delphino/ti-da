@@ -10,7 +10,7 @@ window.onload = function() {
 $(window).on("load", function() {
     alert ("C: $(window).on('load', function() { 処理 };");
 });
-
+ 
 $(document).ready( function() {
     alert ("D: $(document).ready( function() { 処理 };");
 });
