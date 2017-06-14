@@ -117,7 +117,7 @@ function overwriteSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
 // ※ プラグインの設定画面で <div class="movePluginsBeforeAd plugin">(表示内容)</div> の形式で囲んである必要あり。
 // ※ 複数のプラグイン移動には現状非対応。
 function movePlugins () {
-
+    alert ("movePlugins が呼び出された");
     var $target;
     var $dest;
     var $cnt;
