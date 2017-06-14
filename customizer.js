@@ -130,13 +130,14 @@ function movePlugins () {
     if ($target == null) {
         // 見つからなかった場合のエラー処理
         alert ("移動対象が見つかりません");
+        return false;
     };
 
     // 移動先を取得
     $dest = $target.closest(MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
     if ($dest == null) {
         // 見つからなかった場合のエラー処理
-        console.log ("プラグインの移動先が見つかりません");
+        alert ("プラグインの移動先が見つかりません");
         return false;
     };
 
@@ -145,6 +146,7 @@ function movePlugins () {
     // alert ("移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id"));
 
     // 要素を移動
+    alert ("移動対象を移動する直前");
     $target.insertBefore($dest);
     // ↓「追記(もっと読む)」を使用している場合は下記＆読込開始と同時には使えない
     // $target.prependdTo($target.closest("." + MOVEPLUGINS_MORE_CLASS));
