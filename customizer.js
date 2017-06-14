@@ -32,7 +32,7 @@ var $msg; // alert などのメッセージ用
 //この時点で既に中身のHTMLはあるが、操作は不可
 
 // 実行されてるかの確認
-if (UNDER_DEVELOPMENT = True) {
+if (UNDER_DEVELOPMENT = true) {
     alert ("0: 直接記述;");
 };
 
@@ -41,7 +41,7 @@ if (UNDER_DEVELOPMENT = True) {
 // ------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
     // 実行されてるかの確認
-    if (UNDER_DEVELOPMENT = True) {
+    if (UNDER_DEVELOPMENT = true) {
         alert ("1: document.addEventListener('DOMContentLoaded', function() { 処理 };");
     };
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // 複数回実行可能
 $(document).ready( function() {
     // 実行されてるかの確認
-    if (UNDER_DEVELOPMENT = True) {
+    if (UNDER_DEVELOPMENT = true) {
         alert ("2: $(document).ready( function() { 処理 };");
     };
 });
@@ -69,13 +69,13 @@ $(document).ready( function() {
 // ------------------------------------------------------------------------
 // 最後の1回だけ実行される
 window.onload = function() {
-    if (UNDER_DEVELOPMENT = True) {
+    if (UNDER_DEVELOPMENT = true) {
         alert ("3A: window.onload = function() { 処理 };");
     };
 };
 
 $(window).on("load", function() {
-    if (UNDER_DEVELOPMENT = True) {
+    if (UNDER_DEVELOPMENT = true) {
         alert ("3B: $(window).on('load', function() { 処理 };");
     };
 });
