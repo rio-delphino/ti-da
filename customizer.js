@@ -126,7 +126,7 @@ function movePlugins () {
     // ★★★ 実装するには、表示されている全記事分のループが必要
 
     // 移動対象を取得
-    $target = $("." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS");
+    $target = $("." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
     if ($target == null) {
         // 見つからなかった場合のエラー処理
         alert ("移動対象が見つかりません");
