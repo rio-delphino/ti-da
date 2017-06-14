@@ -149,5 +149,5 @@ function movePlugins () {
 
         // ターゲットを移動先へ移動
         $target.insertBefore($dest);
-    };
+    });
 };
