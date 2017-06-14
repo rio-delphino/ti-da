@@ -2,7 +2,7 @@
 //                               グローバル定数
 // ************************************************************************
 // 全般
-var UNDER_DEVELOPMENT = False // True で開発用の alert 等を表示
+var UNDER_DEVELOPMENT = false // true で開発用の alert 等を表示
 
 // overwriteSubscribe 関数用
 var SUBSCRIBE_CLASS = "subscription";
