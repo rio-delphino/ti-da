@@ -47,11 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     // 読者登録タグを置換
-    alert ("overwriteSubscribe を呼び出す直前");
     $ret = overwriteSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 
     // 位置を変える
-    alert ("movePlugins を呼び出す直前");
     $ret = movePlugins ();
 
 });
@@ -120,7 +118,7 @@ function overwriteSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
 // ※ プラグインの設定画面で <div class="movePluginsBeforeAd plugin">(表示内容)</div> の形式で囲んである必要あり。
 // ※ 複数のプラグイン移動には現状非対応。
 function movePlugins () {
-    alert ("movePlugins が呼び出された");
+
     var $target;
     var $dest;
     var $cnt;
@@ -130,7 +128,7 @@ function movePlugins () {
 
     // 移動対象を取得
     $target = $("." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
-    alert ("移動外傷は\n." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
+    alert ("移動対象は\n." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
     if ($target == null) {
         // 見つからなかった場合のエラー処理
         alert ("移動対象が見つかりません");
