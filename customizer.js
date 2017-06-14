@@ -32,7 +32,7 @@ var $msg; // alert などのメッセージ用
 //この時点で既に中身のHTMLはあるが、操作は不可
 
 // 実行されてるかの確認
-if (UNDER_DEVELOPMENT = true) {
+if (UNDER_DEVELOPMENT == true) {
     alert ("0: 直接記述;");
 };
 
@@ -41,7 +41,7 @@ if (UNDER_DEVELOPMENT = true) {
 // ------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
     // 実行されてるかの確認
-    if (UNDER_DEVELOPMENT = true) {
+    if (UNDER_DEVELOPMENT == true) {
         alert ("1: document.addEventListener('DOMContentLoaded', function() { 処理 };");
     };
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // 複数回実行可能
 $(document).ready( function() {
     // 実行されてるかの確認
-    if (UNDER_DEVELOPMENT = true) {
+    if (UNDER_DEVELOPMENT == true) {
         alert ("2: $(document).ready( function() { 処理 };");
     };
 });
@@ -69,13 +69,13 @@ $(document).ready( function() {
 // ------------------------------------------------------------------------
 // 最後の1回だけ実行される
 window.onload = function() {
-    if (UNDER_DEVELOPMENT = true) {
+    if (UNDER_DEVELOPMENT == true) {
         alert ("3A: window.onload = function() { 処理 };");
     };
 };
 
 $(window).on("load", function() {
-    if (UNDER_DEVELOPMENT = true) {
+    if (UNDER_DEVELOPMENT == true) {
         alert ("3B: $(window).on('load', function() { 処理 };");
     };
 });
@@ -127,8 +127,6 @@ function movePlugins () {
 
     // 移動対象を取得
     $target = $("." + MOVEPLUGINS_BEFOREAD_CLASS);
-    alert ("移動対象は\n." + MOVEPLUGINS_BEFOREAD_CLASS);
-    // alert ("移動対象は\n." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
     if ($target == null) {
         // 見つからなかった場合のエラー処理
         alert ("移動対象が見つかりません");
@@ -145,11 +143,10 @@ function movePlugins () {
     };
 
     // 開発用
-    alert ("移動対象のクラス名は " + $target.attr("class"));
-    alert ("移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id"));
+    // alert ("移動対象のクラス名は " + $target.attr("class"));
+    // alert ("移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id"));
 
     // 要素を移動
-    alert ("移動対象を移動する直前");
     $target.insertBefore($dest);
     // ↓「追記(もっと読む)」を使用している場合は下記＆読込開始と同時には使えない
     // $target.prependdTo($target.closest("." + MOVEPLUGINS_MORE_CLASS));
