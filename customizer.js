@@ -115,14 +115,13 @@ function overwriteSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
 // movePlugins 関数
 // ------------------------------------------------------------------------
 // 「各記事の下に表示する」のプラグインを適正な位置へ移動する
+// １ページに複数のターゲットがある場合でも、そのすべてを各々の適正位置へ移動可。
 // ※ プラグインの設定画面で <div class="movePluginsBeforeAd plugin">(表示内容)</div> の形式で囲んである必要あり。
-// ※ 複数のプラグイン移動には現状非対応。
+// ※ movePluinBeforeAd を指定できるのは1つのプラグインのみ。 複数のプラグイン移動には現状では非対応。
 function movePlugins () {
 
     var $target;
     var $dest;
-
-    // ★★★ 実装するには、表示されている全記事分のループが必要
 
     // 移動対象を取得
     $target = $("." + MOVEPLUGINS_BEFOREAD_CLASS);
@@ -132,7 +131,7 @@ function movePlugins () {
         return false;
     };
 
-    $target.each(function() { // 見つかったターゲットの個数分のループ
+    $target.each(function() { // 見つかったターゲットの個数分のループ＝表示中の全記事分のループ
         // 移動先を取得
         $dest = $target.closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
         if ($dest == null) {
