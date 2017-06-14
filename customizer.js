@@ -137,7 +137,7 @@ function movePlugins () {
 
     // 移動先を取得
     $dest = $target.closest(MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
-    alert ("移動先は\n." + MOVEPLUGINS_MORE_CLASS + " の中にある " + MOVEPLUGINS_DEST_FIND　＋ " です。");
+    alert ("移動先は\n." + MOVEPLUGINS_MORE_CLASS + " の中にある " + MOVEPLUGINS_DEST_FIND + " です。");
     if ($dest == null) {
         // 見つからなかった場合のエラー処理
         alert ("プラグインの移動先が見つかりません");
