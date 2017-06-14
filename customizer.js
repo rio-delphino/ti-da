@@ -144,8 +144,8 @@ function movePlugins () {
     };
 
     // 開発用
-    // alert ("移動対象のクラス名は " + $target.attr("class"));
-    // alert ("移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id"));
+    alert ("移動対象のクラス名は " + $target.attr("class"));
+    alert ("移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id"));
 
     // 要素を移動
     alert ("移動対象を移動する直前");
