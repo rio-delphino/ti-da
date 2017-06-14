@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     $ret = overwriteSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 
     // 位置を変える
-    $ret = movePluginBeforeAd ();
+    $ret = movePlugins ();
 
 });
 
