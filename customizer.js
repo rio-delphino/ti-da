@@ -127,8 +127,9 @@ function movePlugins () {
     // ★★★ 実装するには、表示されている全記事分のループが必要
 
     // 移動対象を取得
-    $target = $("." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
-    alert ("移動対象は\n." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
+    $target = $("." + MOVEPLUGINS_BEFOREAD_CLASS);
+    alert ("移動対象は\n." + MOVEPLUGINS_BEFOREAD_CLASS);
+    // alert ("移動対象は\n." + MOVEPLUGINS_PLUGIN_CLASS + "." + MOVEPLUGINS_BEFOREAD_CLASS);
     if ($target == null) {
         // 見つからなかった場合のエラー処理
         alert ("移動対象が見つかりません");
@@ -136,7 +137,7 @@ function movePlugins () {
     };
 
     // 移動先を取得
-    $dest = $target.closest(MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
+    $dest = $target.closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
     alert ("移動先は\n." + MOVEPLUGINS_MORE_CLASS + " の中にある " + MOVEPLUGINS_DEST_FIND + " です。");
     if ($dest == null) {
         // 見つからなかった場合のエラー処理
