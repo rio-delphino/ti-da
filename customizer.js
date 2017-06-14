@@ -121,8 +121,6 @@ function movePlugins () {
 
     var $target;
     var $dest;
-    var $cnt;
-    var $i;
 
     // ★★★ 実装するには、表示されている全記事分のループが必要
 
@@ -134,20 +132,22 @@ function movePlugins () {
         return false;
     };
 
-    // 移動先を取得
-    $dest = $target.closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
-    if ($dest == null) {
-        // 見つからなかった場合のエラー処理
-        alert ("プラグインの移動先が見つかりません");
-        return false;
+    $target.each(function() { // 見つかったターゲットの個数分のループ
+        // 移動先を取得
+        $dest = $target.closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
+        if ($dest == null) {
+            // 見つからなかった場合のエラー処理
+            alert ("プラグインの移動先が見つかりません");
+            return false;
+        };
+
+        // 開発用
+        // $msg =
+        //     "移動対象のクラス名は " + $target.attr("class") + "\n" +
+        //     "移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id");
+        // alert ($msg);
+
+        // ターゲットを移動先へ移動
+        $target.insertBefore($dest);
     };
-
-    // 開発用
-    // alert ("移動対象のクラス名は " + $target.attr("class"));
-    // alert ("移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id"));
-
-    // 要素を移動
-    $target.insertBefore($dest);
-    // ↓「追記(もっと読む)」を使用している場合は下記＆読込開始と同時には使えない
-    // $target.prependdTo($target.closest("." + MOVEPLUGINS_MORE_CLASS));
 };
