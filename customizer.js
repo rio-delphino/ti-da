@@ -176,6 +176,7 @@ function setCurrentClass () {
                     $a.addClass("current");
                     $a.parent("li").addClass("current");
                 };
+            alert ($a.attr("href") + "\n" + $a.attr("class") );
             };
         });
     });
