@@ -166,9 +166,9 @@ function setCurrentClass () {
     var $a
     $url = location.href; // 現在の URL を取得
     $nav = $("nav"); // 全ての nav タグを取得
-    for each ( $nav ) { // 見つかった全ての nav タグに対するループ
+    $nav.each(function() { // 見つかった全ての nav タグに対するループ
         $li = $nav.find("li"); // nav タグ内のすべての li 要素を取得
-        for each ( $li ) { // 全ての li 要素に対するループ
+        $li.each(function() { // 全ての li 要素に対するループ
             $a = $li.find("a"); // 子要素の a タグを取得
             if ($a !== null) { // a タグが存在する場合
                 if ($a.attr("href") == $url) { // href と現在のURLが一致した場合
@@ -177,8 +177,8 @@ function setCurrentClass () {
                     $a.parent("li").addClass("current");
                 };
             };
-        };
-    };
+        });
+    });
 };
 
 
