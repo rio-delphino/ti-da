@@ -161,19 +161,15 @@ function movePlugins () {
 // ナビは nav -> ul -> li -> a の構造を持つこととします。
 function setCurrentClass () {
     var $url
-    var $nav
-    var $li
     var $a
     $url = location.href; // 現在の URL を取得
-    $a = $("nav a"); // nav タグ内のすべての li 内の a 要素を取得
-    alert ("a タグの要素数は " + $a.length + " です。");
+    $a = $("nav a"); // nav タグ内のすべての li 内の a 要素を取得 ※ページナビゲーションも含まれます
     $a.each(function() { // 全ての a 要素に対するループ
       if ($(this).attr("href") == $url) { // href と現在のURLが一致した場合
           // a タグと li タグに current クラスを付与
           $(this).addClass("current");
           $(this).parent("li").addClass("current");
       };
-      alert ($(this).attr("href") + "\n" + $(this).attr("class") );
     });
 };
 
