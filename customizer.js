@@ -165,7 +165,7 @@ function setCurrentClass () {
     var $li
     var $a
     $url = location.href; // 現在の URL を取得
-    $a = $("nav ul li　a"); // nav タグ内のすべての li 内の a 要素を取得
+    $a = $("nav a"); // nav タグ内のすべての li 内の a 要素を取得
     alert ("a タグの要素数は " + $a.length + " です。");
     $a.each(function() { // 全ての a 要素に対するループ
       if ($(this).attr("href") == $url) { // href と現在のURLが一致した場合
