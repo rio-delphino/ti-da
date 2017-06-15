@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (UNDER_DEVELOPMENT == true) {
         alert ("1: document.addEventListener('DOMContentLoaded', function() { 処理 };");
     };
+    
+    // ナビゲーションに current クラスを付与
+    $ret = setCurrentClass ();
 
     // 読者登録タグを置換
     $ret = overwriteSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
@@ -150,3 +153,33 @@ function movePlugins () {
         $target.insertBefore($dest);
     });
 };
+
+// ------------------------------------------------------------------------
+// setCurrentClass 関数
+// ------------------------------------------------------------------------
+// ナビゲーションタグ内に現在のURLと一致するアイテムがあれば current クラスを付与します。
+// ナビは nav -> ul -> li -> a の構造を持つこととします。
+function setCurrentClass 関数
+    var $url
+    var $nav
+    var $li
+    var $a
+    $url = location.href; // 現在の URL を取得
+    $nav = $("nav"); // 全ての nav タグを取得
+    for each ( $nav ) { // 見つかった全ての nav タグに対するループ
+        $li = $nav.find("li"); // nav タグ内のすべての li 要素を取得
+        for each ( $li ) { // 全ての li 要素に対するループ
+            $a = $li.find("a"); // 子要素の a タグを取得
+            if ($a !== null) { // a タグが存在する場合
+                if ($a.attr("href") == $url) { // href と現在のURLが一致した場合
+                    // a タグと li タグに current クラスを付与
+                    $a.addClass("current");
+                    $a.parent("li").addClass("current");
+                };
+            };
+        };
+    };
+};
+
+
+
