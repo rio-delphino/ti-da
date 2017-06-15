@@ -166,13 +166,14 @@ function setCurrentClass () {
     var $a
     $url = location.href; // 現在の URL を取得
     $a = $("nav ul li　a"); // nav タグ内のすべての li 内の a 要素を取得
+    alert ("a タグの要素数は " + $a.length + " です。");
     $a.each(function() { // 全ての a 要素に対するループ
-      if ($a.attr("href") == $url) { // href と現在のURLが一致した場合
-              // a タグと li タグに current クラスを付与
-              $a.addClass("current");
-              $a.parent("li").addClass("current");
+      if ($(this).attr("href") == $url) { // href と現在のURLが一致した場合
+          // a タグと li タグに current クラスを付与
+          $(this).addClass("current");
+          $(this).parent("li").addClass("current");
       };
-      alert ($a.attr("href") + "\n" + $a.attr("class") );
+      alert ($(this).attr("href") + "\n" + $(this).attr("class") );
     });
 };
 
