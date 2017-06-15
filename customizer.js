@@ -159,7 +159,7 @@ function movePlugins () {
 // ------------------------------------------------------------------------
 // ナビゲーションタグ内に現在のURLと一致するアイテムがあれば current クラスを付与します。
 // ナビは nav -> ul -> li -> a の構造を持つこととします。
-function setCurrentClass 関数
+function setCurrentClass () {
     var $url
     var $nav
     var $li
