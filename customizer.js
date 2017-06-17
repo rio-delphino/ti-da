@@ -174,4 +174,153 @@ function setCurrentClass () {
 };
 
 
+// ------------------------------------------------------------------------
+// reformatSidebar 関数
+// ------------------------------------------------------------------------
+// サイドバーの整形を行います。これによってクラスやタグが変化しているので要 CSS 編集
 
+function reformatSidebar () {
+
+    var $jpTitle = [
+        "読者登録",
+        "てぃーだイチオシ",
+        "カレンダー",
+        "カテゴリー",
+        "最新記事",
+        "過去記事",
+        "最近のコメント",
+        "お気に入り",
+        "ブログ内検索",
+        "QRコード",
+        // 10
+        "RSSリンク",
+        "アクセスカウンタ",
+        "プロフィール",
+        "最新記事タイトル",
+        "オーナーへメール",
+        "マイアルバム",
+        "新規投稿",
+        "タグクラウド",
+        "みんなの沖縄旅行",
+        "てぃーだからのお知らせ",
+        // 20
+        "カスタムプラグイン1",
+        "カスタムプラグイン2",
+        "カスタムプラグイン3",
+        "カスタムプラグイン4",
+        "カスタムプラグイン5"
+    ];
+    var $className = [
+        "subscription",
+        "ichioshi",
+        "calender",
+        "category",
+        "recententry_img",
+        "archives",
+        "comment",
+        "search", // 構造が特殊
+        "link",
+        "qucode",
+        // 10
+        "rss", // 構造が特殊
+        "counter", // 構造が特殊
+        "profile",
+        "recententry",
+        "inquiry",
+        "album", // 構造が特殊
+        "blog_entry", // 構造が特殊
+        "tag_cloud",
+        "1", // 構造が特殊
+        "ad",  // 構造が特殊
+        // 20
+        "custom1",
+        "custom2",
+        "custom3",
+        "custom4",
+        "custom5"
+    ];
+    var $engTitle = [
+        "Subscribe",
+        "Recommends",
+        "Calender",
+        "Category",
+        "Recent Entry",
+        "Archives",
+        "Recent Comments",
+        "Favorite Links",
+        "Blog Search",
+        "QR Code",
+        // 10
+        "RSS Link",
+        "Counter",
+        "Profile",
+        "Recent Entry",
+        "Contact",
+        "My Album",
+        "Post New Entry",
+        "Tag Cloud",
+        "Ad",
+        "Ti-da Info",
+        // 20
+        "Custom Plugin 1",
+        "Custom Plugin 2",
+        "Custom Plugin 3",
+        "Custom Plugin 4",
+        "Custom Plugin 5"
+    ];
+    
+    var $itemCnt;
+    var $i;
+    var $root;
+    var $target;
+    var $html;
+    var $ROOT_CLASS = "contentsSub";
+    
+    // 3つの配列で数が一致しない場合は終了
+    if (($jpTitle.length !== $engTitle.length) || ($jpTitle.length !== $className.length) {
+        return false;
+    };
+    
+    // 配列数分のループ
+    $root = $("." + $ROOT_CLASS)
+    for ($i = 0; $i < $className.length; $i ++) {
+        $target = $root.find("." + $className[$i]);
+        if ($target !== null) {
+            // 対象が見つかった場合
+            switch ($className[$i]) {
+                case "search":
+                    // 実行する命令;
+                    break;
+                case "rss":
+                    // 実行する命令;
+                    break;
+                case "counter":
+                    // 実行する命令;
+                    break;
+                case "album":
+                    // 実行する命令;
+                    break;
+                case "blog_entry":
+                    // 実行する命令;
+                    break;
+                case "1":
+                    // 実行する命令;
+                    break;
+                case "ad":
+                    // 実行する命令;
+                    break;
+                default: // 上記以外のクラスの場合、通常の整形処理を行います
+// 整形前 <div class="blog_entry"><div class="sidetitle">新規投稿</div>
+// 整形後 <div class="sideTitle"><i class="fa fa-circle-o" aria-hidden="true"></i><span class="sideTitleMain">カテゴリ</span><span class="sideTitleSub">Category</span></div>
+                    
+                    // div.sidetitle を削除
+                    $target.find(".sidetitle").remove
+                    // 替わりとなる html を生成
+                    $html = "<i class="fa fa-circle-o" aria-hidden="true"></i><span class='" + $className[$i] + "'>" + $jpTitle + "</span><span class='sideTitleSub'>" + $engTitle + "</span></div>";
+                    // 要素内先頭に挿入
+                    $target.prepend($html);
+                    break;
+        };
+    };
+};
+ 
