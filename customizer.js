@@ -317,7 +317,7 @@ function reformatSidebar () {
 // 整形後 <div class="sideTitle"><i class="fa fa-circle-o" aria-hidden="true"></i><span class="sideTitleMain">カテゴリ</span><span class="sideTitleSub">Category</span></div>
                     
                     // div.sidetitle を削除
-                    $target.find(".sidetitle").remove
+                    $target.find(".sidetitle").remove;
                     // 替わりとなる html を生成
                     $html = "<i class="fa fa-circle-o" aria-hidden="true"></i><span class='" + $className[$i] + "'>" + $jpTitle + "</span><span class='sideTitleSub'>" + $engTitle + "</span></div>";
                     // 要素内先頭に挿入
