@@ -280,7 +280,7 @@ function reformatSidebar () {
     var $ROOT_CLASS = "contentsSub";
     
     // 3つの配列で数が一致しない場合は終了
-    if (($jpTitle.length !== $engTitle.length) || ($jpTitle.length !== $className.length) {
+    if (($jpTitle.length !== $engTitle.length) || ($jpTitle.length !== $className.length)) {
         return false;
     };
     
