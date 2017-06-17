@@ -319,7 +319,7 @@ function reformatSidebar () {
                     // div.sidetitle を削除
                     $target.find(".sidetitle").remove;
                     // 替わりとなる html を生成
-                    $html = "<i class='fa fa-circle-o' aria-hidden='true'></i><span class='" + $className[$i] + "'>" + $jpTitle[$i] + "</span><span class='sideTitleSub'>" + $engTitle[$i] + "</span></div>";
+                    $html = "<i class='fa fa-circle-o' aria-hidden='true'></i><span class='" + $className[$i] + "'>" + $jpTitle[$i] + "</span><span class='sideTitleSub'>" + $engTitle[$i] + "</span>";
                     alert ($html);
                     // 要素内先頭に挿入
                     $target.prepend($html);
