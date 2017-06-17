@@ -323,6 +323,7 @@ function reformatSidebar () {
                     // 要素内先頭に挿入
                     $target.prepend($html);
                     break;
+            };
         };
     };
 };
