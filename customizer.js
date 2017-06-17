@@ -279,8 +279,6 @@ function reformatSidebar () {
     var $html;
     var $ROOT_CLASS = "contentsSub";
     
-    alert ("reformatSidebar関数の頭");
-    
     // 3つの配列で数が一致しない場合は終了
     if (($jpTitle.length !== $engTitle.length) || ($jpTitle.length !== $className.length)) {
         return false;
@@ -317,11 +315,12 @@ function reformatSidebar () {
                 default: // 上記以外のクラスの場合、通常の整形処理を行います
 // 整形前 <div class="blog_entry"><div class="sidetitle">新規投稿</div>
 // 整形後 <div class="sideTitle"><i class="fa fa-circle-o" aria-hidden="true"></i><span class="sideTitleMain">カテゴリ</span><span class="sideTitleSub">Category</span></div>
-                    alert ("default部分を通過\n" + "クラスは " + $className + " です");
+                    alert ("default部分を通過\n" + "クラスは " + $className[$i] + " です");
                     // div.sidetitle を削除
                     $target.find(".sidetitle").remove;
                     // 替わりとなる html を生成
                     $html = "<i class='fa fa-circle-o' aria-hidden='true'></i><span class='" + $className[$i] + "'>" + $jpTitle + "</span><span class='sideTitleSub'>" + $engTitle + "</span></div>";
+                    alert ($html);
                     // 要素内先頭に挿入
                     $target.prepend($html);
                     break;
