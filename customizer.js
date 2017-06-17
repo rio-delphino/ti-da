@@ -52,9 +52,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // 読者登録タグを置換
     $ret = overwriteSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 
-    // 位置を変える
+    // プラグインの位置を変える
     $ret = movePlugins ();
 
+    // サイドバーを整形
+    $ret = reformatSidebar ();
+ 
 });
 
 // ------------------------------------------------------------------------
