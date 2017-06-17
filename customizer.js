@@ -314,12 +314,12 @@ function reformatSidebar () {
                     break;
                 default: // 上記以外のクラスの場合、通常の整形処理を行います
 // 整形前 <div class="blog_entry"><div class="sidetitle">新規投稿</div>
-// 整形後 <div class="sideTitle"><i class="fa fa-circle-o" aria-hidden="true"></i><span class="sideTitleMain">カテゴリ</span><span class="sideTitleSub">Category</span></div>
+// 整形後 <div class="blog_entry"><div class="sideTitle"><i class="fa fa-circle-o" aria-hidden="true"></i><span class="sideTitleMain">カテゴリ</span><span class="sideTitleSub">Category</span></div>
                     alert ($className[$i]);
                     // div.sidetitle を削除
                     $target.find(".sidetitle").remove();
                     // 替わりとなる html を生成
-                    $html = "<i class='fa fa-circle-o' aria-hidden='true'></i><span class='" + $className[$i] + "'>" + $jpTitle[$i] + "</span><span class='sideTitleSub'>" + $engTitle[$i] + "</span>";
+                    $html = "<div class="sideTitle"><i class='fa fa-circle-o' aria-hidden='true'></i><span class='" + $className[$i] + "'>" + $jpTitle[$i] + "</span><span class='sideTitleSub'>" + $engTitle[$i] + "</span></div>";
                     alert ($html);
                     // 要素内先頭に挿入
                     $target.prepend($html);
