@@ -223,7 +223,7 @@ function reformatSidebar () {
         "comment",
         "search", // 構造が特殊
         "link",
-        "qucode",
+        "qrcode",
         // 10
         "rss", // 構造が特殊
         "counter", // 構造が特殊
@@ -291,10 +291,18 @@ function reformatSidebar () {
         if ($target !== null) {
             // 対象が見つかった場合
             switch ($className[$i]) {
+                case "rss": // rss だけなぜかタイトルが2重になるので回避
+                    // html を生成
+                    $html = "<div class='sideTitle'><i class='fa fa-circle-o' aria-hidden='true'></i><span class='sideTitleSub'>" + $engTitle[$i] + "</span><span class='sideTitleMain'>" + $jpTitle[$i] + "</span></div>"
+                            + "<div class='side'>"; // なぜか div.side が無いので追加
+                    // 要素内先頭に挿入
+                    $target.prepend($html);
+                    // 要素内末尾に挿入 ※ なぜか無かった div.side の〆
+                    $html = "</div>";
+                    $target.append($html);
+                    break;
                 /* タイトル部分に関しては他と同じで特別な処理は不要なのでいったんコメントアウト
                 case "search":
-                    break;
-                case "rss":
                     break;
                 case "counter":
                     break;
@@ -314,10 +322,8 @@ function reformatSidebar () {
                     $target.find(".sidetitle").remove();
                     // 替わりとなる html を生成
                     $html = "<div class='sideTitle'><i class='fa fa-circle-o' aria-hidden='true'></i><span class='sideTitleSub'>" + $engTitle[$i] + "</span><span class='sideTitleMain'>" + $jpTitle[$i] + "</span></div>";
-                    console.log ($html);
                     // 要素内先頭に挿入
                     $target.prepend($html);
-                    // $($html).prependTo($target);
                     break;
             };
         };
