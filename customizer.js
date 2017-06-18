@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     $ret = setCurrentClass ();
 
     // 読者登録タグを置換
-    $ret = overwriteSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
+    $ret = reformatSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 
     // プラグインの位置を変える
     $ret = movePlugins ();
@@ -93,11 +93,11 @@ $(window).on("load", function() {
 // ************************************************************************
 
 // ------------------------------------------------------------------------
-// overwriteSubscribe 関数
+// reformatSubscribe 関数
 // ------------------------------------------------------------------------
 // 読者登録のタグを置換します
 
-function overwriteSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
+function reformatSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
     
     var $target;
     
