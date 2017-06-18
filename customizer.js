@@ -192,8 +192,8 @@ function reformatSidebar () {
         "最新記事",
         "過去記事",
         "最近のコメント",
-        "お気に入り",
         "ブログ内検索",
+        "お気に入り",
         "QRコード",
         // 10
         "RSSリンク",
@@ -250,8 +250,8 @@ function reformatSidebar () {
         "Recent Entry",
         "Archives",
         "Recent Comments",
-        "Favorite Links",
         "Blog Search",
+        "Favorite Links",
         "QR Code",
         // 10
         "RSS Link",
