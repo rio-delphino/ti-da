@@ -277,7 +277,7 @@ function reformatSidebar () {
     var $root;
     var $target;
     var $html;
-    var $ROOT_CLASS = "contentsSub";
+    var $ROOT_ID = "contentsSub";
     
     // 3つの配列で数が一致しない場合は終了
     if (($jpTitle.length !== $engTitle.length) || ($jpTitle.length !== $className.length)) {
@@ -285,7 +285,7 @@ function reformatSidebar () {
     };
     
     // 配列数分のループ
-    $root = $("." + $ROOT_CLASS)
+    $root = $("#" + $ROOT_ID)
     for ($i = 0; $i < $className.length; $i ++) {
         $target = $root.find("." + $className[$i]);
         if ($target !== null) {
