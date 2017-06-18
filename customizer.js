@@ -291,27 +291,22 @@ function reformatSidebar () {
         if ($target !== null) {
             // 対象が見つかった場合
             switch ($className[$i]) {
+                /* タイトル部分に関しては他と同じで特別な処理は不要なのでいったんコメントアウト
                 case "search":
-                    // 実行する命令;
                     break;
                 case "rss":
-                    // 実行する命令;
                     break;
                 case "counter":
-                    // 実行する命令;
                     break;
                 case "album":
-                    // 実行する命令;
                     break;
                 case "blog_entry":
-                    // 実行する命令;
                     break;
                 case "1":
-                    // 実行する命令;
                     break;
                 case "ad":
-                    // 実行する命令;
                     break;
+                */
                 default: // 上記以外のクラスの場合、通常の整形処理を行います
 // 整形前 <div class="blog_entry"><div class="sidetitle">新規投稿</div>
 // 整形後 <div class="blog_entry"><div class="sideTitle"><i class="fa fa-circle-o" aria-hidden="true"></i><span class="sideTitleMain">カテゴリ</span><span class="sideTitleSub">Category</span></div>
