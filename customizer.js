@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
     $ret = movePlugins ();
 
     // サイドバーを整形
-    $ret = reformatSidebar ();
+    // ※ いったん不使用に
+    // $ret = reformatSidebar (); 
  
 });
 
