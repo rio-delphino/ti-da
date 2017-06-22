@@ -120,7 +120,6 @@ function reformatSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
     $target = $("div.subscription"); // class だけどページに1つしかないハズ
     if ($target == null) {
         return false; // 対象タグが見つからない場合は処理を中止
-        exit;
     };
     
     // 読者登録の書換え処理
