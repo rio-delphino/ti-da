@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', function() {
         alert ("1: document.addEventListener('DOMContentLoaded', function() { 処理 };");
     };
     
-    // 元々はここで関数を呼び出していたが、描画後の書換えが見苦しいため却下
-    reformatHTML();
+    // 元々はここで関数を呼び出していたが却下 → bodyタグ内末尾で呼び出した方が若干速い。
+    // reformatHTML();
 
 });
 
