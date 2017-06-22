@@ -46,19 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
         alert ("1: document.addEventListener('DOMContentLoaded', function() { 処理 };");
     };
     
-    // ナビゲーションに current クラスを付与
-    $ret = setCurrentClass ();
+    // 元々はここで関数を呼び出していたが、描画後の書換えが見苦しいため却下
 
-    // 読者登録タグを置換
-    $ret = reformatSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
-
-    // プラグインの位置を変える
-    $ret = movePlugins ();
-
-    // サイドバーを整形
-    // ※ いったん不使用に
-    // $ret = reformatSidebar (); 
- 
 });
 
 // ------------------------------------------------------------------------
@@ -93,6 +82,29 @@ $(window).on("load", function() {
 //                             ユーザー定義関数
 // ************************************************************************
 
+// ------------------------------------------------------------------------
+// reformatHTML 関数
+// ------------------------------------------------------------------------
+// ページのHTML書換え等に関する全てのユーザー定義関数を実行します。
+// ※ body タグ内の末尾で呼び出すこと。
+
+function reformatHTML() {
+    
+    // ナビゲーションに current クラスを付与
+    $ret = setCurrentClass ();
+
+    // 読者登録タグを置換
+    $ret = reformatSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
+
+    // プラグインの位置を変える
+    $ret = movePlugins ();
+
+    // サイドバーを整形
+    // ※ いったん不使用に
+    // $ret = reformatSidebar (); 
+    
+};
+    
 // ------------------------------------------------------------------------
 // reformatSubscribe 関数
 // ------------------------------------------------------------------------
@@ -140,7 +152,7 @@ function movePlugins () {
 
     $target.each(function() { // 見つかったターゲットの個数分のループ＝表示中の全記事分のループ
         // 移動先を取得
-        $dest = $target.closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
+        $dest = $(this).closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
         if ($dest == null) {
             // 見つからなかった場合のエラー処理
             alert ("プラグインの移動先が見つかりません");
@@ -330,4 +342,54 @@ function reformatSidebar () {
         };
     };
 };
- 
+
+// ------------------------------------------------------------------------
+// reformatDateTime 関数
+// ------------------------------------------------------------------------
+// 日付を整形します。 2017年6月22日 10:00 → 2017-06-22 10:00
+// 日付は span.entryDate / span.commentDate、時間は span.entryTime / span.commentTime で囲みます。
+// さらに time タグを内部に持つ場合は、その datetime 属性に日時を設定します。
+
+function reformatDateTime() {
+
+    // HTML構造依存の特殊な処理なんでグローバル定数にしない
+    var ENTRY_DATETIME_CLASS = ".entryDateTime"; // 記事の日時を格納している要素
+    var COMMENT_DATETIME_CLASS = ".commentDateTime"; // コメントの日時を格納している要素
+    
+    var $target;
+    var $dt, $tm;
+    var $dtm;
+    var $hasTime;
+    
+    // 投稿
+    $target = $(ENTRY_DATETIME_CLASS); // 日時を格納している要素を取得
+    // 要素分の繰り返し処理
+    $target.each( function() {
+        // 日付・時間を取得
+        $dt = $(this).find(".entryDate").text().toString();
+        $tm = $(this).find(".entryTime").text().toString();
+        // "年月日" を "-" で置換
+        $dt = $dt.replace(/年|月/g, "-");
+        $dt = $dt.replace(/日/g, "");
+        $(this).find(".entryDate").text($dt);
+        
+        $hasTime = $(this).find("time");
+        if ($hasTime !== null) {
+            // time 要素で囲われている場合
+            $hasTime.attr("datetime", $dt + " " + $tm + "+09:00"); // datetime 属性を追加
+        };
+    });
+    
+    // コメント
+    $target = $(COMMENT_DATETIME_CLASS); // 日時を格納している要素を取得
+    // 要素分の繰り返し処理
+    $target.each( function() {
+        $dtm = $(this).html().split(" "); // 日付・時刻を配列に分けて取得
+        $dt = $dtm[0]; // 日付を取得
+        $tm = $dtm[1]; // 時間を取得
+        // "年月日" を "-" で置換
+        $dt = $dt.replace(/年|月/g, "-");
+        $dt = $dt.replace(/日/g, "");
+        $(this).html("<span class='commentDate'>" + $dt + "</span><span class='commentTime'>" + $tm + "</span>"); // 一応 span で囲んどく
+    });
+};
