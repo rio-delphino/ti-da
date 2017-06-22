@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // 元々はここで関数を呼び出していたが、描画後の書換えが見苦しいため却下
+    reformatHTML();
 
 });
 
