@@ -90,6 +90,8 @@ $(window).on("load", function() {
 
 function reformatHTML() {
     
+    alert ("reformatHTML が実行されました");
+    
     // ナビゲーションに current クラスを付与
     $ret = setCurrentClass ();
 
