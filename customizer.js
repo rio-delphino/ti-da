@@ -37,6 +37,9 @@ if (UNDER_DEVELOPMENT == true) {
     alert ("0: 直接記述;");
 };
 
+/* 当JSファイル読込からreformatHTML実行完了までの時間を計測 */
+console.time("Timer1: Script Read --> Script Done");
+
 // ------------------------------------------------------------------------
 // 1: HTMLドキュメントのParseが完了、CSS,画像等のサブリソースの読み込みやParseを開始
 // ------------------------------------------------------------------------
@@ -106,6 +109,8 @@ function reformatHTML() {
     // ※ いったん不使用に
     // $ret = reformatSidebar (); 
 
+    /* 当JSファイル読込からreformatHTML実行完了までの時間を計測 */
+    console.timeEnd("Timer1: Script Read --> Script Done");
     
 };
     
