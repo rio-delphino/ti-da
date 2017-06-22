@@ -106,6 +106,9 @@ function reformatHTML() {
     // 日付・時間を再フォーマット
     $ret = reformatDateTime();
     
+    // ありがとうボタンを正しい位置へ
+    $ret = moveThanksBtn();
+    
     // サイドバーを整形
     // ※ いったん不使用に
     // $ret = reformatSidebar (); 
@@ -401,4 +404,20 @@ function reformatDateTime() {
         $dt = $dt.replace(/日/g, "");
         $(this).html("<span class='commentDate'>" + $dt + "</span><span class='commentTime'>" + $tm + "</span>"); // 一応 span で囲んどく
     });
+};
+
+// ------------------------------------------------------------------------
+// moveThanksBtn 関数
+// ------------------------------------------------------------------------
+// なぜか挿入位置が不正な Thanks ボタンを正しい位置へ移動させます
+function moveThanksBtn() {
+    var THANKS_BUTTON_ID = "thanks_button_box";
+    var SOCIAL_BUTTON_CLASS = "c3_social_buton";
+    var $target, $dest;
+    $dest = $("." + SOCIAL_BUTTON_CLASS + " ul");
+    $target = $("li#" + THANKS_BUTTON_ID);
+    if ($dest == null || $target == null) {
+        return false; // どちらかが見つからない場合は終了
+    };
+    $target.appendTo($dest);
 };
