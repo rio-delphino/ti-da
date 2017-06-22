@@ -155,7 +155,7 @@ function movePlugins () {
     $target = $("." + MOVEPLUGINS_BEFOREAD_CLASS);
     if ($target == null) {
         // 見つからなかった場合のエラー処理
-        alert ("移動対象が見つかりません");
+        console.log ("movePlugins() 関数: 移動対象のプラグインはありません");
         return false;
     };
 
@@ -164,7 +164,7 @@ function movePlugins () {
         $dest = $(this).closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
         if ($dest == null) {
             // 見つからなかった場合のエラー処理
-            alert ("プラグインの移動先が見つかりません");
+            console.log ("movePlugins() 関数: プラグインの移動先が見つかりません");
             return false;
         };
 
@@ -175,7 +175,7 @@ function movePlugins () {
         // alert ($msg);
 
         // ターゲットを移動先へ移動
-        $target.insertBefore($dest);
+        $(this).insertBefore($dest);
     });
 };
 
