@@ -90,8 +90,6 @@ $(window).on("load", function() {
 
 function reformatHTML() {
     
-    alert ("reformatHTML が実行されました");
-    
     // ナビゲーションに current クラスを付与
     $ret = setCurrentClass ();
 
@@ -101,9 +99,13 @@ function reformatHTML() {
     // プラグインの位置を変える
     $ret = movePlugins ();
 
+    // 日付・時間を再フォーマット
+    $ret = reformatDateTime();
+    
     // サイドバーを整形
     // ※ いったん不使用に
     // $ret = reformatSidebar (); 
+
     
 };
     
