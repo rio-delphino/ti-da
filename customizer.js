@@ -216,6 +216,7 @@ function movePluginsOnTop () {
             console.log ("movePluginsOnTop 関数: (" + $(this).attr("class") + ")");
             console.log ("movePluginsOnTop 関数: (" + $dest.attr("class") + ")");
             $(this).insertAfter($dest);
+            $(".movePluginsOnTop").insertAfter("#topicPath");
             console.log ("movePluginsOnTop 関数: (移動先: moveAfterTopicPath)");
         } else if ($(this).hasClass("moveContentsMainTop")) { // ContentsMainの一番上へ移動
             $dest = $("#contentsMain");
