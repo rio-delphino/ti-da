@@ -105,6 +105,7 @@ function reformatHTML() {
 
     // 「ページの上部」 のプラグインの位置を修正
     $ret = movePluginsOnTop ();
+    console.log $ret;
     
     // 日付・時間を再フォーマット
     $ret = reformatDateTime();
@@ -195,6 +196,8 @@ function movePluginsOnTop () {
 
     var $target;
     var $dest;
+    
+    console.log ("movePluginsOnTop 関数が実行されました。");
 
     // 移動対象を取得
     $target = $("." + MOVEPLUGINS_ONTOP_CLASS);
