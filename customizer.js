@@ -214,7 +214,7 @@ function movePluginsOnTop () {
             $dest = $("#topicPath");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
             console.log ("movePluginsOnTop 関数: (" + $(this).attr("class") + ")");
-            console.log ("movePluginsOnTop 関数: (" + $dest.attr("class") + ")");
+            console.log ("movePluginsOnTop 関数: (" + $dest.attr("id") + ")");
             $(this).insertAfter($dest);
             $(".movePluginsOnTop").insertAfter("#topicPath");
             console.log ("movePluginsOnTop 関数: (移動先: moveAfterTopicPath)");
