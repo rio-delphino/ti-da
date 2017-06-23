@@ -105,7 +105,7 @@ function reformatHTML() {
 
     // 「ページの上部」 のプラグインの位置を修正
     $ret = movePluginsOnTop ();
-    console.log $ret;
+    console.log ($ret);
     
     // 日付・時間を再フォーマット
     $ret = reformatDateTime();
