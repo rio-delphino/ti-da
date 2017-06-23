@@ -204,7 +204,6 @@ function movePluginsOnTop () {
     };
 
     $target.each(function() { // 見つかったターゲットの個数分のループ
-        alert ($(this).html());
         // 移動先を取得
         if ($(this).hasClass("moveAfterNav")) { // グローバルナビの直下へ移動
             $dest = $("#navGlobal");
@@ -214,8 +213,10 @@ function movePluginsOnTop () {
         } else if ($(this).hasClass("moveAfterTopicPath")) { // TopicPath の直下へ移動
             $dest = $("#topicPath");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
+            alert ("this = " + $(this).prop("tagName") + ":" + $(this).attr("class"));
+            alert ("dest = " + $dest.prop("tagName") + ":" + $dest.attr("class"));
             $(this).insertAfter($dest);
-            console.log ("movePluginsOnTop 関数: (移動先: moveAfterTopicPath) new2");
+            console.log ("movePluginsOnTop 関数: (移動先: moveAfterTopicPath) new3");
         } else if ($(this).hasClass("moveContentsMainTop")) { // ContentsMainの一番上へ移動
             $dest = $("#contentsMain");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
