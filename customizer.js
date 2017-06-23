@@ -100,9 +100,12 @@ function reformatHTML() {
     // 読者登録タグを置換
     $ret = reformatSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 
-    // プラグインの位置を変える
-    $ret = movePlugins ();
+    // 「個別記事の下」 のプラグインの位置を修正
+    $ret = movePluginsAfterArticle ();
 
+    // 「ページの上部」 のプラグインの位置を修正
+    $ret = movePluginsOnTop ();
+    
     // 日付・時間を再フォーマット
     $ret = reformatDateTime();
     
@@ -143,13 +146,13 @@ function reformatSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
 
 
 // ------------------------------------------------------------------------
-// movePlugins 関数
+// movePluginsAfterArticle 関数
 // ------------------------------------------------------------------------
 // 「各記事の下に表示する」のプラグインを適正な位置へ移動する
 // １ページに複数のターゲットがある場合でも、そのすべてを各々の適正位置へ移動可。
-// ※ プラグインの設定画面で <div class="movePluginsBeforeAd plugin">(表示内容)</div> の形式で囲んである必要あり。
-// ※ movePluinBeforeAd を指定できるのは1つのプラグインのみ。 複数のプラグイン移動には現状では非対応。
-function movePlugins () {
+// ※ プラグインの設定画面で <div class="movePluginsAfterArticle plugin">(表示内容)</div> の形式で囲んである必要あり。
+// ※ movePluinAfterArticle は複数のプラグインに指定可能。
+function movePluginsAfterArticle () {
 
     var $target;
     var $dest;
@@ -157,18 +160,14 @@ function movePlugins () {
     // 移動対象を取得
     $target = $("." + MOVEPLUGINS_BEFOREAD_CLASS);
     if ($target == null) {
-        // 見つからなかった場合のエラー処理
-        console.log ("movePlugins() 関数: 移動対象のプラグインはありません");
-        return false;
+        return false; // 見つからなかった場合
     };
 
     $target.each(function() { // 見つかったターゲットの個数分のループ＝表示中の全記事分のループ
         // 移動先を取得
         $dest = $(this).closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
         if ($dest == null) {
-            // 見つからなかった場合のエラー処理
-            console.log ("movePlugins() 関数: プラグインの移動先が見つかりません");
-            return false;
+            return false; // 見つからなかった場合は終了
         };
 
         // 開発用
@@ -179,6 +178,45 @@ function movePlugins () {
 
         // ターゲットを移動先へ移動
         $(this).insertBefore($dest);
+    });
+};
+
+
+var MOVEPLUGINS_ONTOP_CLASS = "movePluginsOnTop";
+var MOVEPLUGINS_CONTENTSMAIN_CLASS = "contentsMain"
+
+// ------------------------------------------------------------------------
+// movePluginsOnTop 関数
+// ------------------------------------------------------------------------
+// 「記事一覧の上部に表示する」のプラグインを適正な位置へ移動する
+// ※ プラグインの設定画面で <div class="movePluginsOnTop plugin">(表示内容)</div> の形式で囲んである必要あり。
+
+function movePluginsOnTop () {
+
+    var $target;
+    var $dest;
+
+    // 移動対象を取得
+    $target = $("." + MOVEPLUGINS_ONTOP_CLASS);
+    if ($target == null) {
+        return false; // 見つからなかった場合
+    };
+
+    $target.each(function() { // 見つかったターゲットの個数分のループ
+        // 移動先を取得
+        if ($(this).hasClass("moveAfterNav")) { // グローバルナビの直下へ移動
+            $dest = $("#navGlobal");
+            if ($dest == null) { return false }; // 見つからなかった場合は終了
+            $(this).insertAfter($dest);
+        } else if ($(this).hasClass("moveAfterTopicPath")) { // TopicPath の直下へ移動
+            $dest = $("#topicPath");
+            if ($dest == null) { return false }; // 見つからなかった場合は終了
+            $(this).insertAfter($dest);
+        } else if ($(this).hasClass("moveContentsMainTop")) { // ContentsMainの一番上へ移動
+            $dest = $("#contentsMain");
+            if ($dest == null) { return false }; // 見つからなかった場合は終了
+            $(this).prependTo($dest);
+        };
     });
 };
 
