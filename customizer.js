@@ -213,8 +213,9 @@ function movePluginsOnTop () {
         } else if ($(this).hasClass("moveAfterTopicPath")) { // TopicPath の直下へ移動
             $dest = $("#topicPath");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
+            console.log ("movePluginsOnTop 関数: (" + $this.attr("class") + ")");
             $(this).insertAfter($dest);
-            console.log ("movePluginsOnTop 関数が実行されました。 (移動先: moveAfterTopicPath)");
+            console.log ("movePluginsOnTop 関数: (移動先: moveAfterTopicPath)");
         } else if ($(this).hasClass("moveContentsMainTop")) { // ContentsMainの一番上へ移動
             $dest = $("#contentsMain");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
