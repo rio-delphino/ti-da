@@ -197,8 +197,6 @@ function movePluginsOnTop () {
     var $target;
     var $dest;
     
-    console.log ("movePluginsOnTop 関数が実行されました。");
-
     // 移動対象を取得
     $target = $("." + MOVEPLUGINS_ONTOP_CLASS);
     if ($target == null) {
@@ -211,14 +209,17 @@ function movePluginsOnTop () {
             $dest = $("#navGlobal");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
             $(this).insertAfter($dest);
+            console.log ("movePluginsOnTop 関数が実行されました。 (移動先: moveAfterNav)");
         } else if ($(this).hasClass("moveAfterTopicPath")) { // TopicPath の直下へ移動
             $dest = $("#topicPath");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
             $(this).insertAfter($dest);
+            console.log ("movePluginsOnTop 関数が実行されました。 (移動先: moveAfterTopicPath)");
         } else if ($(this).hasClass("moveContentsMainTop")) { // ContentsMainの一番上へ移動
             $dest = $("#contentsMain");
             if ($dest == null) { return false }; // 見つからなかった場合は終了
             $(this).prependTo($dest);
+            console.log ("movePluginsOnTop 関数が実行されました。 (移動先: moveContentsMainTop)");
         };
     });
 };
