@@ -13,9 +13,8 @@ var SUBSCRIBE_NEW_UNSUBSCRIBE = "<div class='sidebody'>解除は<a href='blog_su
 
 // movePlugins 関数用
 var MOVEPLUGINS_PLUGIN_CLASS = "plugin";
-var MOVEPLUGINS_BEFOREAD_CLASS = "movePluginsBeforeAd";
-var MOVEPLUGINS_MORE_CLASS = "entryBodyMore";
-var MOVEPLUGINS_DEST_FIND = "center:last";
+var MOVEPLUGINS_ABOVEINDEX_CLASS = "display-above-index";
+var MOVEPLUGINS_BELOWARTICLE_CLASS = "display-below-article";
 
 // ************************************************************************
 //                              グローバル変数
@@ -147,81 +146,72 @@ function reformatSubscribe ( $newTitle, $newDescription, $newUnsubscribe ) {
 
 
 // ------------------------------------------------------------------------
-// movePluginsAfterArticle 関数
+// movePluginsBelowArticle 関数
 // ------------------------------------------------------------------------
 // 「各記事の下に表示する」のプラグインを適正な位置へ移動する
 // １ページに複数のターゲットがある場合でも、そのすべてを各々の適正位置へ移動可。
-// ※ プラグインの設定画面で <div class="movePluginsAfterArticle plugin">(表示内容)</div> の形式で囲んである必要あり。
-// ※ movePluinAfterArticle は複数のプラグインに指定可能。
-function movePluginsAfterArticle () {
+// ※ プラグインの設定画面で <div class="display-below-article">(表示内容)</div> の形式で囲んである必要あり。
+// ※ 複数のプラグインに指定可能。
+function movePluginsBelowArticle () {
 
     var $target;
     var $dest;
 
     // 移動対象を取得
-    $target = $("." + MOVEPLUGINS_BEFOREAD_CLASS);
-    if ($target == null) {
-        return false; // 見つからなかった場合
-    };
+    $target = $("." + MOVEPLUGINS_BELOWARTICLE_CLASS);
+    if ($target == null) { return false }; // 見つからなかった場合は終了
 
     $target.each(function() { // 見つかったターゲットの個数分のループ＝表示中の全記事分のループ
         // 移動先を取得
-        $dest = $(this).closest("." + MOVEPLUGINS_MORE_CLASS).find(MOVEPLUGINS_DEST_FIND);
-        if ($dest == null) {
-            return false; // 見つからなかった場合は終了
-        };
+        $dest = $(this).closest(".entryBodyMore").find("center:last");
+        if ($dest == null) { return false }; // 見つからなかった場合は終了
 
-        // 開発用
-        // $msg =
-        //     "移動対象のクラス名は " + $target.attr("class") + "\n" +
-        //     "移動先のタグは " + $dest.attr("tagName") + "\n移動先のクラス名は " + $dest.attr("class") + "\n移動先のIDは " + $dest.attr("id");
-        // alert ($msg);
-
-        // ターゲットを移動先へ移動
+        // ターゲットを移動
         $(this).insertBefore($dest);
     });
 };
 
 
-var MOVEPLUGINS_ONTOP_CLASS = "movePluginsOnTop";
-var MOVEPLUGINS_CONTENTSMAIN_CLASS = "contentsMain"
-
 // ------------------------------------------------------------------------
-// movePluginsOnTop 関数
+// movePluginsAboveIndex 関数
 // ------------------------------------------------------------------------
 // 「記事一覧の上部に表示する」のプラグインを適正な位置へ移動する
-// ※ プラグインの設定画面で <div class="movePluginsOnTop plugin">(表示内容)</div> の形式で囲んである必要あり。
+// ※ プラグインの設定画面で <div class="plugin display-above-index">(表示内容)</div> の形式で囲んである必要あり。
 
-function testmovePluginsOnTop () {
+function movePluginsAboveIndex() {
 
     var $target;
     var $dest;
+    var $targetClass;
     
     // 移動対象を取得
-    $target = $("." + MOVEPLUGINS_ONTOP_CLASS);
-    if ($target == null) {
-        return false; // 見つからなかった場合
-    };
+    $target = $("." + MOVEPLUGINS_ABOVEINDEX_CLASS);
+    if ($target == null) { return false }; // 見つからなかった場合は終了
 
     $target.each(function() { // 見つかったターゲットの個数分のループ
-        // 移動先を取得
-        if ($(this).hasClass("moveAfterNav")) { // グローバルナビの直下へ移動
-            $dest = $("#navGlobal");
-            if ($dest == null) { return false }; // 見つからなかった場合は終了
-            $(this).insertAfter($dest);
-            console.log ("movePluginsOnTop 関数が実行されました。 (移動先: moveAfterNav)");
-        } else if ($(this).hasClass("moveAfterTopicPath")) { // TopicPath の直下へ移動
-            $dest = $("#topicPath");
-            if ($dest == null) { return false }; // 見つからなかった場合は終了
-            alert ("this = " + $(this).attr("class"));
-            alert ("dest = " + $dest.attr("class"));
-            $(this).insertAfter($dest);
-            console.log ("movePluginsOnTop 関数: (移動先: moveAfterTopicPath) new3");
-        } else if ($(this).hasClass("moveContentsMainTop")) { // ContentsMainの一番上へ移動
-            $dest = $("#contentsMain");
-            if ($dest == null) { return false }; // 見つからなかった場合は終了
-            $(this).prependTo($dest);
-            console.log ("movePluginsOnTop 関数が実行されました。 (移動先: moveContentsMainTop)");
+        // 対象のクラスをすべて取得 ※ plugin 等も含まれるので注意
+        $targetClass = $(this).attr("class");
+        $targetClass = $targetClass.split(" ");
+        
+        // クラス毎の移動処理
+        for (var i = 0; i < $targetClass.length; i++) {
+            switch ($targetClass[i]) {
+                case "move-below-navglobal":
+                    $dest = $("#navGlobal"); // 移動先を取得
+                    if ($dest == null) { return false }; // 移動先が見つからなかった場合は終了
+                    $(this).insertAfter($dest); // 移動
+                    break;
+                case "move-below-topicpath":
+                    $dest = $("#topicpath"); // 移動先を取得
+                    if ($dest == null) { return false }; // 移動先が見つからなかった場合は終了
+                    $(this).insertAfter($dest); // 移動
+                    break;
+                case "move-above-contentsmain":
+                    $dest = $("#contentsMain"); // 移動先を取得
+                    if ($dest == null) { return false }; // 移動先が見つからなかった場合は終了
+                    $(this).prependTo($dest); // 移動
+                    break;
+            };
         };
     });
 };
