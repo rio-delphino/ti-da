@@ -192,7 +192,7 @@ var MOVEPLUGINS_CONTENTSMAIN_CLASS = "contentsMain"
 // 「記事一覧の上部に表示する」のプラグインを適正な位置へ移動する
 // ※ プラグインの設定画面で <div class="movePluginsOnTop plugin">(表示内容)</div> の形式で囲んである必要あり。
 
-function movePluginsOnTop () {
+function testmovePluginsOnTop () {
 
     var $target;
     var $dest;
