@@ -100,11 +100,10 @@ function reformatHTML() {
     $ret = reformatSubscribe ( SUBSCRIBE_NEW_TITLE, SUBSCRIBE_NEW_DISCRIPTION, SUBSCRIBE_NEW_UNSUBSCRIBE );
 
     // 「個別記事の下」 のプラグインの位置を修正
-    $ret = movePluginsAfterArticle ();
+    $ret = movePluginsBelowArticle ();
 
-    // 「ページの上部」 のプラグインの位置を修正
-    $ret = movePluginsOnTop ();
-    console.log ($ret);
+    // 「記事一覧の上部」 のプラグインの位置を修正
+    $ret = movePluginsAboveIndex ();
     
     // 日付・時間を再フォーマット
     $ret = reformatDateTime();
